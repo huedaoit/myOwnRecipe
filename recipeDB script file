@@ -1,0 +1,32 @@
+const params = {
+    connection: "localhost",
+    db: "recipeDB",
+    type: "json",
+    batchSize: 2000,
+    exportCollections: [
+        {
+            collection: "recipe",
+            fields: [],
+            filepath: "/Users/LilyDao/ACSD Program/Dynamic Web Application/recipeDB.recipe.json",
+            prettyJson: false,
+            docSeparator: "sep_newline",  //sep_newline|sep_comma_newline|export_documents_as_array
+            //Use the transformer to customize the export result
+            //transformer:(doc)=>{ //async (doc)=>{
+            //   doc["field"]= "new value";
+            //   return doc; //return null skips this doc
+            //},
+        },
+        {
+            collection: "user",
+            fields: [],
+            filepath: "/Users/LilyDao/ACSD Program/Dynamic Web Application/recipeDB.user.json",
+            prettyJson: false,
+            docSeparator: "sep_newline"  //sep_newline|sep_comma_newline|export_documents_as_array
+        }
+    ]
+};
+
+mb.exportCollections(params);
+
+sleep(100);
+mb.openFolder(require("path").dirname(params.exportCollections[0].filepath));
