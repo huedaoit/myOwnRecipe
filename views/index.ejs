@@ -36,13 +36,23 @@
                 <div class="row">
                     <div class="collapse navbar-collapse  " id="navbarCollapse">
                         <div class="navbar-nav">
-                            <a href="./index" class=" color_change nav-item nav-link active">Home</a>
+
+                            <a href="./" class=" color_change nav-item nav-link active">Home</a>
                             <a href="#" class="nav-item nav-link">|</a>
-                            <a href="./Recipe" class="nav-item nav-link">Add Recipe</a>
+                            <% if(isAuthenticated) { %>
+                                <a href="./Recipe" class="nav-item nav-link">Add Recipe</a>
+                            <%} else { %>
+                               <% } %>
                             <a href="#" class="nav-item nav-link">|</a>
                             <a href="./aboutme" class="nav-item nav-link">About Me</a>
                             <a href="#" class="nav-item nav-link">|</a>
-                            <a href="./Registration" class="nav-item nav-link signup">Sign Up</a>
+<!--                            <a href="./Registration" class="nav-item nav-link signup">Sign Up</a>-->
+                            <% if(!isAuthenticated) { %>
+                            <a href="./login" class="nav-item nav-link signup">Log In</a>
+                            <% } else { %>
+                                <a href="./logout" class="nav-item nav-link signup">Log Out</a>
+                            <% } %>
+
                             <form class="d-flex">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -57,36 +67,6 @@
         </div>
     </nav>
 </div>
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light naveChangeColor">-->
-<!--    <div class="container-fluid">-->
-
-<!--        &lt;!&ndash;        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">&ndash;&gt;-->
-<!--        &lt;!&ndash;            <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </button>&ndash;&gt;-->
-<!--        <div class="container">-->
-<!--            <div class="row">-->
-<!--                <div class="collapse navbar-collapse  " id="navbarCollapse">-->
-<!--                    <div class="navbar-nav">-->
-<!--                        <a href="./index" class=" color_change nav-item nav-link active">Home</a>-->
-<!--                        <a href="#" class="nav-item nav-link">|</a>-->
-<!--                        <a href="./Recipe" class="nav-item nav-link">Add Recipe</a>-->
-<!--                        <a href="#" class="nav-item nav-link">|</a>-->
-<!--                        <a href="./aboutme" class="nav-item nav-link">About Me</a>-->
-<!--                        <a href="#" class="nav-item nav-link">|</a>-->
-<!--                        <a href="./Registration" class="nav-item nav-link signup">Sign Up</a>-->
-<!--                        <form class="d-flex">-->
-<!--                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                            <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--                        </form>-->
-<!--                    </div>-->
-
-
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--    </div>-->
-<!--</nav>-->
 
 <div class="container ">
     <div class="row colorRowChange">
@@ -107,9 +87,15 @@
             <br>
             <p>---------------------------------------------------------------------------</p>
             <div class=" float-end">
-                <button type="button" class="btn btn-success" value="Add Recipe" onclick="location.href='/Recipe';">
-                    Add New Recipe
-                </button>
+                <% if(isAuthenticated) { %>
+                    <button type="button" class="btn btn-success" value="Add Recipe" onclick="location.href='/Recipe';">
+                        Add New Recipe
+                    </button>
+                <%} else { %>
+                <% } %>
+<!--                <button type="button" class="btn btn-success" value="Add Recipe" onclick="location.href='/Recipe';">-->
+<!--                    Add New Recipe-->
+<!--                </button>-->
             </div>
         </div>
     </div>
@@ -155,10 +141,10 @@
 
     function deleteRecipe(id) {
         console.log(id);
-        // delete backend
+        // delete recipe from backend
         xhttp.open("DELETE", "/deleteRecipe/" + id);
         xhttp.send();
-        //reload page
+        //reload  index page
         location.reload();
     }
 </script>

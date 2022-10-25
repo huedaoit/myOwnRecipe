@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title><%= title %></title>
@@ -8,6 +9,7 @@
           rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
           crossorigin="anonymous">
     <link rel='/stylesheet' href='./public/stylesheets/style.css'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <div class="container ">
@@ -25,15 +27,21 @@
             <div class="row">
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="./index" class=" color_change nav-item nav-link active">Home</a>
+                        <a href="./" class=" color_change nav-item nav-link active">Home</a>
                         <a href="#" class="nav-item nav-link">|</a>
                         <a href="./Recipe" class="nav-item nav-link">Add Recipe</a>
                         <a href="#" class="nav-item nav-link">|</a>
                         <a href="./aboutme" class="nav-item nav-link">About Me</a>
                         <a href="#" class="nav-item nav-link">|</a>
-                        <a href="./Registration" class="nav-item nav-link signup">Sign Up</a>
-                        <form class="d-flex form-right">
-                            <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                        <!--                            <a href="./Registration" class="nav-item nav-link signup">Sign Up</a>-->
+                        <% if(!isAuthenticated) { %>
+                            <a href="./login" class="nav-item nav-link signup">Log In</a>
+                        <% } else { %>
+                            <a href="./logout" class="nav-item nav-link signup">Log Out</a>
+                        <% } %>
+
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
@@ -47,7 +55,6 @@
 <!--<h1><%= title %></h1>-->
 <p> <%= title %></p>
 <div class=" container">
-    <!--    <img src="public/images/banner.jpg" width="691" height="256">-->
 </div>
 <div class="container">
     <div class="row">
@@ -58,12 +65,12 @@
             <form action="/submit-form" method="post" name="recipe">
                 <div class="form-group">
                     <label for="addRecipe"> Recipe Name </label>
-                    <input type="text" name="recipe"  class="form-control" value="">
+                    <input type="text" name="recipe" class="form-control" value="">
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="addDescription"> Description </label>
-                    <input type="text" name="description"  class="form-control" value="">
+                    <input type="text" name="description" class="form-control" value="">
                 </div>
                 <br>
                 <input type="submit" class="btn btn-outline-success" value="Add Recipe">
@@ -74,8 +81,18 @@
         </div>
     </div>
 </div>
+
+
 <script>
+    const xhttp = new XMLHttpRequest()
+    window.addEventListener("load", () => {
+        console.log("page is loaded")
+        xhttp.onreadystatechange = function () {
+            res.redirect("/");
+        }
+    });
 
 </script>
+
 </body>
 </html>

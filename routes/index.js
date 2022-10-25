@@ -1,4 +1,5 @@
 const express = require('express');
+const {auth} = require('express-openid-connect');
 const mongoose = require('mongoose');
 require('../views/connectMongoDB');
 const {check, validationResult, checkSchema} = require('express-validator');
@@ -7,8 +8,13 @@ const Registration = mongoose.model('Registration');
 const Recipe = mongoose.model('Recipe');
 
 // /* GET home page. */
-router.get('/index', function (req, res, next) {
-    res.render('index', {title: ''});
+router.get('/', function (req, res, next) {
+    console.log(req.oidc.isAuthenticated());
+    let test = req.oidc.isAuthenticated();
+    res.render('index',
+        {title: '',
+         isAuthenticated: test
+    });
 
 });
 router.get('/get-data', function (req, res, next) {
@@ -19,6 +25,7 @@ router.get('/get-data', function (req, res, next) {
             res.json(recipe);
         }
     });
+
 });
 router.delete('/deleteRecipe/:id',function (req,res,next){
     let deleteRecipe= Recipe.deleteOne({_id:req.params.id},function (err,deleteRecipe){
@@ -63,7 +70,10 @@ router.post('/registration',
 
 // Add recipe
 router.get('/Recipe', (req, res) => {
-    res.render('Recipe', {title: ''});
+    let test = req.oidc.isAuthenticated();
+    res.render('Recipe', {title: '',
+        isAuthenticated: test
+    });
 });
 router.post('/submit-form',
 
@@ -74,6 +84,18 @@ router.post('/submit-form',
 
 //aboutme
 router.get('/aboutme', (req, res) => {
-    res.render('aboutme', {title: 'About Me'});
+    let test = req.oidc.isAuthenticated();
+    res.render('aboutme', {title: 'About Me',
+        isAuthenticated: test
+    });
 })
+
+
+//req.isAuthenticated is provided from the auth router
+// router.get('/login', (req, res) => {
+//    console.log(req.oidc.isAuthenticated())
+//     res.render('login', {title: 'Log In'});
+//     let isAuthenticated = req.oidc.isAuthenticated();
+//     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+// });
 module.exports = router;
