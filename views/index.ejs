@@ -10,63 +10,21 @@
           crossorigin="anonymous">
 
 
-    <link  rel="stylesheet"  href='/public/stylesheets/style.css'/>
+    <link rel="stylesheet" href='/public/stylesheets/style.css'/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 </head>
 <body class="colorChange">
-
-
-<div class="container ">
+<%- include('navigation/nav') %>
+<% if(isAuthenticated) { %>
     <div class="row">
-        <img src="./public/images/banner.jpg">
+        <img src="./public/images/banner.jpeg" class="img-fluid">
+        <img src="./public/images/14-benefits-bg.png" class="img-fluid">
+
     </div>
-</div>
-<!--<h1><%= title %></h1>-->
-<!--<p>Welcome to <%= title %></p>-->
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light naveChangeColor">
-        <div class="container-fluid">
-
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            <div class="container">
-                <div class="row">
-                    <div class="collapse navbar-collapse  " id="navbarCollapse">
-                        <div class="navbar-nav">
-
-                            <a href="./" class=" color_change nav-item nav-link active">Home</a>
-                            <a href="#" class="nav-item nav-link">|</a>
-                            <% if(isAuthenticated) { %>
-                                <a href="./Recipe" class="nav-item nav-link">Add Recipe</a>
-                            <%} else { %>
-                               <% } %>
-                            <a href="#" class="nav-item nav-link">|</a>
-                            <a href="./aboutme" class="nav-item nav-link">About Me</a>
-                            <a href="#" class="nav-item nav-link">|</a>
-<!--                            <a href="./Registration" class="nav-item nav-link signup">Sign Up</a>-->
-                            <% if(!isAuthenticated) { %>
-                            <a href="./login" class="nav-item nav-link signup">Log In</a>
-                            <% } else { %>
-                                <a href="./logout" class="nav-item nav-link signup">Log Out</a>
-                            <% } %>
-
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </nav>
-</div>
+<% } else { %>
+<% } %>
 
 <div class="container ">
     <div class="row colorRowChange">
@@ -87,21 +45,15 @@
             <br>
             <p>---------------------------------------------------------------------------</p>
             <div class=" float-end">
-                <% if(isAuthenticated) { %>
+                <% if(isAuthenticated && user.reciperoles == 'admin') { %>
                     <button type="button" class="btn btn-success" value="Add Recipe" onclick="location.href='/Recipe';">
                         Add New Recipe
                     </button>
-                <%} else { %>
+                <% } else { %>
                 <% } %>
-<!--                <button type="button" class="btn btn-success" value="Add Recipe" onclick="location.href='/Recipe';">-->
-<!--                    Add New Recipe-->
-<!--                </button>-->
             </div>
         </div>
     </div>
-</div>
-
-</div>
 </div>
 
 <script>
@@ -124,11 +76,14 @@
                     console.log(recipe);
 
                     let item = document.createElement('li');
-                    item.innerHTML = `<b>${recipe.recipe}  </b> <br>${recipe.description}<br>
-                   <button  type="button" class="btn btn-outline-warning" value="Delete Recipe" onclick="deleteRecipe('${recipe._id}')">Delete Recipe</button>`;
+                    item.innerHTML = `<b>${recipe.recipe}  </b> <br>${recipe.description}<br><br>${recipe.time}<br>
+                <% if(isAuthenticated && user.reciperoles == 'admin') { %>
+                   <button  type="button" class="btn btn-outline-warning" value="Delete Recipe" onclick="deleteRecipe('${recipe._id}')">Delete Recipe</button>
+                   <button  type="button" class="btn btn-outline-warning" value="Edit Recipe" onclick="location.href='/edit/${recipe._id}';" >Edit Recipe</button>
+                <% } %>
+                   <button  type="button" class="btn btn-outline-warning" value="Edit Recipe" onclick="location.href='/order/${recipe._id}';" >Order Recipe</button>`;
 
                     listrecipe.appendChild(item);
-
                 }
                 document.getElementById('recipes-list').appendChild(listrecipe);
             }
@@ -147,6 +102,13 @@
         //reload  index page
         location.reload();
     }
+
+    function editRecipe(id) {
+        console.log(id);
+        //edit recipe from backend
+
+    }
+
 </script>
 
 </body>

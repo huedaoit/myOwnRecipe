@@ -5,6 +5,156 @@ background-color: bisque;
  background-color: #ffffff;
 }
 
+.header_background{
+ background: url("../images/header-bg.jpeg" )  no-repeat;
+ background-size: cover;
+}
+.navbar-nav{
+ text-align: right;
+}
+.h1headingnew {
+ font-family: gotham-bold;
+ text-align: center;
+}
+.btn-outline-success {
+ --bs-btn-color: #520808;
+ --bs-btn-border-color: #520808;
+ --bs-btn-hover-color: #fff;
+ --bs-btn-hover-bg: #520808;
+ --bs-btn-hover-border-color: #520808;
+ --bs-btn-focus-shadow-rgb: 25, 135, 84;
+ --bs-btn-active-color: #fff;
+ --bs-btn-active-bg: #520808;
+ --bs-btn-active-border-color: #520808;
+ --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+ --bs-btn-disabled-color: #520808;
+ --bs-btn-disabled-bg: transparent;
+ --bs-btn-disabled-border-color: #520808;
+ --bs-gradient: none;
+}
+.form-control {
+ border: 1px solid #520808;
+}
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+ color: #520808;
+}
+.nav-link:focus, .nav-link:hover {
+ color: #ffffff;
+}
+.nav-link {
+ color: #520808;
+}
+/* Extra small devices "mobile phones" */
+@media only screen and (max-width: 768px) {
+ #container-fluid
+}
 
+/* Extra small devices "Tabs" */
+@media only screen and (max-width: 992px) {
+ #container-fluid
+}
+/* Extra small devices "Tabs" */
+@media only screen and (max-width: 1200px) {
+ #container-fluid
+}
 
-  
+@media only screen and (max-width: 1920px) {
+ #container-fluid
+}
+.row_hover {
+ position: relative;
+
+}
+
+.overlay {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: rgba(0, 0, 0, 0);
+ transition: background 0.5s ease;
+}
+
+.row_hover:hover .overlay {
+ display: block;
+ background: rgba(0, 0, 0, .3);
+}
+
+.title {
+ position: absolute;
+ width: 500px;
+ left: 0;
+ top: 120px;
+ font-weight: 700;
+ font-size: 30px;
+ text-align: center;
+ text-transform: uppercase;
+ color: white;
+ z-index: 1;
+ transition: top .5s ease;
+}
+
+.row_hover:hover .title {
+ top: 90px;
+}
+.button {
+ position: absolute;
+ width: 500px;
+ left:0;
+ top: 180px;
+ text-align: center;
+ opacity: 0;
+ transition: opacity .35s ease;
+}
+
+.button a {
+ width: 200px;
+ padding: 12px 48px;
+ text-align: center;
+ color: white;
+ border: solid 2px white;
+ z-index: 1;
+}
+.row_hover:hover .button {
+ opacity: 1;
+}
+
+/*.tooltip {*/
+/* position: relative;*/
+/* display: inline-block;*/
+/* border-bottom: 1px dotted black;*/
+/*}*/
+
+/*.tooltip .tooltiptext {*/
+/* visibility: hidden;*/
+/* width: 120px;*/
+/* background-color: #ffffff;*/
+/* color: #fff;*/
+/* text-align: center;*/
+/* border-radius: 6px;*/
+/* padding: 5px 0;*/
+/* position: absolute;*/
+/* z-index: 1;*/
+/* bottom: 125%;*/
+/* left: 50%;*/
+/* margin-left: -60px;*/
+/* opacity: 0;*/
+/* transition: opacity 0.3s;*/
+/*}*/
+
+/*.tooltip .tooltiptext::after {*/
+/* content: "";*/
+/* position: absolute;*/
+/* top: 100%;*/
+/* left: 50%;*/
+/* margin-left: -5px;*/
+/* border-width: 5px;*/
+/* border-style: solid;*/
+/* border-color: #555 transparent transparent transparent;*/
+/*}*/
+
+/*.tooltip:hover .tooltiptext {*/
+/* visibility: visible;*/
+/* opacity: 1;*/
+/*}*/

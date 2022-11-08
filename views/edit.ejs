@@ -10,62 +10,66 @@
           crossorigin="anonymous">
 
 
-    <link  rel="stylesheet"  href='/public/stylesheets/style.css'/>
+    <link rel="stylesheet" href='/public/stylesheets/style.css'/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 </head>
 <body class="colorChange">
+<%- include('navigation/nav') %>
+<% if(isAuthenticated) { %>
+    <div class="row">
+        <img src="./public/images/banner.jpeg" class="img-fluid">
+        <img src="./public/images/14-benefits-bg.png" class="img-fluid">
+    </div>
+<% } else { %>
+<% } %>
 
-    <%- include('navigation/nav')%>
-    <% if(isAuthenticated) { %>
-        <div class="row row_hover">
-            <img src="./public/images/banner.jpeg" class="img-fluid" >
-            <img src="./public/images/14-benefits-bg.png" class="img-fluid">
-
-    <% } else { %>
-    <% } %>
 <div class="container">
     <div class="row">
         <div class="col-md-3">
 
         </div>
         <div class=" col-md-6 main  ">
-            <form action="/submit-Form" method="post" name="recipe">
+            <form action="/update-form/<%=recipe.id%>" method="post" name="" >
                 <div class="form-group">
-                    <label for="addRecipe"> Recipe Name </label>
-                    <input type="text" name="recipe" required class="form-control" value="">
+                    <label for="recipe"> Recipe Name </label>
+                    <input type="text" name="recipe" required class="form-control" value="<%=recipe.recipe%>">
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="addDescription"> Description </label>
-                    <input type="text" name="description" required  class="form-control" value="">
+                    <label for="description"> Description </label>
+                    <input type="text" name="description" required class="form-control" value="<%=recipe.description%> ">
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="addTime"> Time </label>
-                    <input type="text" name="time"  required class="form-control" value="">
+                    <label for="time"> Time </label>
+                    <input type="text" name="time" required class="form-control" value="<%=recipe.time%>">
                 </div>
                 <br>
 
-                <input type="submit" class="btn btn-outline-success"  onclick="createrecipe()" value="Add Recipe">
-
+                <input type="submit" class="btn btn-outline-success" onclick=" updateRecipe()" value="Edit Recipe">
             </form>
+
         </div>
+
+
         <div class="col-md-3">
         </div>
     </div>
 </div>
-
 <script>
+
     const xhttp = new XMLHttpRequest()
     window.addEventListener("load", () => {
         console.log("page is loaded")
         xhttp.onreadystatechange = function () {
+
+
         }
     });
 
 </script>
-
 </body>
 </html>
+

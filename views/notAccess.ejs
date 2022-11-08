@@ -10,36 +10,20 @@
           crossorigin="anonymous">
 
 
-    <link  rel="stylesheet"  href='/public/stylesheets/style.css'/>
+    <link rel="stylesheet" href='/public/stylesheets/style.css'/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 </head>
 <body class="colorChange">
-<%- include('navigation/nav')%>
-
+<%- include('navigation/nav') %>
+<% if(isAuthenticated) { %>
     <div class="row">
         <img src="./public/images/banner.jpeg" class="img-fluid" >
         <img src="./public/images/14-benefits-bg.png" class="img-fluid">
     </div>
-
-<div class="row">
-    <div class="column">
-        <div class=" ms-lg-3  h1headingnew with-banner ">
-            <h1>Contact Us !</h1>
-            <p> yourownrecipe@gmail.com </br>
-                Or Call us at: +91 (0120) 4181100
-                www.yourownrecipe.com </p>
-            <p> YourOwnRecipe is the easy to use, all-in-one recipe organizer, shopping list and meal planner
-                available across all of your devices. Enter your recipes with as much or as little information
-                as you like. Copy and paste recipes from your existing documents or apps. Categorize your
-                recipes by course and category</p>
-        </div>
-    </div>
-
-</div>
-</div>
-</div>
+<% } else { %>
+<% } %>
+<h1>You mus to login to order recipe</h1>
 </body>
 </html>
-
