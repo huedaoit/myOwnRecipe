@@ -91,7 +91,8 @@ const updateForm =  (req, res) => {
     Recipe.updateOne({_id:req.params.id}, {
         recipe:req.body.recipe,
         description:req.body.description,
-        time:req.body.time
+        time:req.body.time,
+        ingredient:req.body.ingredient
     }).then(
         () =>{
            res.redirect('/index');

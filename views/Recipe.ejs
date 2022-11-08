@@ -43,19 +43,27 @@
                 </div>
                 <br>
                 <div class="form-group">
+                    <label for="addIngredient"> Ingredients </label>
+                    <input type="text" name="ingredient"  required class="form-control" value="">
+                </div>
+                <br>
+                <div class="form-group">
                     <label for="addTime"> Time </label>
                     <input type="text" name="time"  required class="form-control" value="">
                 </div>
                 <br>
-
                 <input type="submit" class="btn btn-outline-success"  onclick="createrecipe()" value="Add Recipe">
 
             </form>
+
+
         </div>
         <div class="col-md-3">
         </div>
+
     </div>
 </div>
+
 
 <script>
     const xhttp = new XMLHttpRequest()

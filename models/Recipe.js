@@ -11,6 +11,11 @@ const recipeSchema = new mongoose.Schema({
         type:String,
         trim:true
     } ,
+
+    ingredient:{
+        type: String,
+        trim:true
+    },
     time:{
         type: String,
         trim:true

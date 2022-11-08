@@ -40,7 +40,9 @@
 
         </div>
         <div class="col-md-6 main">
+            <br>
             <section id="recipes-list">
+
             </section>
             <br>
             <p>---------------------------------------------------------------------------</p>
@@ -76,12 +78,13 @@
                     console.log(recipe);
 
                     let item = document.createElement('li');
-                    item.innerHTML = `<b>${recipe.recipe}  </b> <br>${recipe.description}<br><br>${recipe.time}<br>
+                    item.innerHTML = `<b>${recipe.recipe}  </br></b> <br><b>Description:</b> <br>${recipe.description} <br><br><b>Ingredients:</b> <br> ${recipe.ingredient}<br><br><b>  Time to cook:</b> <br>${recipe.time}<br>
+                    <br>
                 <% if(isAuthenticated && user.reciperoles == 'admin') { %>
-                   <button  type="button" class="btn btn-outline-warning" value="Delete Recipe" onclick="deleteRecipe('${recipe._id}')">Delete Recipe</button>
+                    <button  type="button" class="btn btn-outline-warning" value="Delete Recipe" onclick="deleteRecipe('${recipe._id}')">Delete Recipe</button>
                    <button  type="button" class="btn btn-outline-warning" value="Edit Recipe" onclick="location.href='/edit/${recipe._id}';" >Edit Recipe</button>
                 <% } %>
-                   <button  type="button" class="btn btn-outline-warning" value="Edit Recipe" onclick="location.href='/order/${recipe._id}';" >Order Recipe</button>`;
+                   <button  type="button" class="btn btn-outline-warning" value="Edit Recipe" onclick="location.href='/order/${recipe._id}';" >Order Recipe</button> </br>`;
 
                     listrecipe.appendChild(item);
                 }
