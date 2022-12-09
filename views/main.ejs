@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+          crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href='/public/stylesheets/style.css'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body class="colorChange">
+<%- include('navigation/nav') %>
+<% if(isAuthenticated) { %>
+<div class="row row_hover">
+    <img src="/public/images/banner.jpeg" class="img-fluid">
+    <img src="/public/images/14-benefits-bg.png" class="img-fluid">
+
+    <% } else { %>
+    <% } %>
+    <div class="container con_border ">
+        <div class="row colorRowChange">
+
+            <div class="col-3">
+                <img src="/public/images/4.jpeg" height="200" width="200"/>
+                <br>
+                <p>----------------------------</p>
+                <img src="/public/images/2.jpg" height="200" width="200"/>
+                <br>
+                <p>----------------------------</p>
+                <img src="/public/images/1.png" height="200" width="auto"/>
+
+            </div>
+            <br>
+            <div class="col-md-8 main">
+                <br>
+                <div  class="borderTable" >
+                <table>
+                    <tr>
+                        <br>
+                        <div><b><h1><%= recipe.recipe %></h1></b></div>
+                        <br>
+                        <div><img src="/public/images/1.png" height="400" width="400"/></div>
+                        <br>
+                        <span>Author: <%= recipe.author %>
+                            Pre Time:<%= recipe.pretime %>
+                            Cook Time:<%= recipe.time %>
+                        </span>
+                        <br>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <th>Ingredients</th>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td><%= recipe.description %></td>
+                        <td><%= recipe.ingredient %></td>
+                    </tr>
+                </table>
+                </div>
+                <div class=" float-end">
+                    <br>
+                    <button type="button" class="btn btn-success" value="back" onclick="location.href='/index';">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('navigation/copyright') %>
+</body>
+</html>
+

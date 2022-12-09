@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,24 +18,31 @@
 </head>
 <body class="colorChange">
 <%- include('navigation/nav') %>
+<div class="row_hover row">
+    <img src="./public/images/banner.jpeg" class="img-fluid" >
+    <img src="./public/images/14-benefits-bg.png" class="img-fluid">
 
-    <div class="row_hover row ">
-        <img src="./public/images/banner.jpeg" class="img-fluid" >
-        <img src="./public/images/14-benefits-bg.png" class="img-fluid">
-
-        <p  class="title"> Create new your recipe?</p>
-        <% if(isAuthenticated) { %>
-            <div class="button  overlay">
-                <a href="./upgrade"> Upgrade now </a></div>
-        <% } else { %>
-            <div class="button  myDIV overlay ">
-                <a  href="./login"> Upgrade </a>
-            </div>
-
-        <% } %>
+</div>
 
 
+<div class="container">
+    <div class="row ">
+        <div class="col-md-3">
+
+        </div>
+        <div class=" col-md-6 main border_new ">
+            <h1 class="text_center pay_successful"> Upgrade successful!</h1>
+            <p> Welcome to become your own recipe<br>
+                Please check your email to confirm and active your account.
+            </p>
+
+
+        </div>
+        <div class="col-md-3">
+
+        </div>
     </div>
+</div>
 
 <%- include('navigation/copyright') %>
 </body>

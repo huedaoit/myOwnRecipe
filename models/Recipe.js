@@ -19,6 +19,19 @@ const recipeSchema = new mongoose.Schema({
     time:{
         type: String,
         trim:true
+    },
+    uploaded_file:{
+        type:String,
+        trim:true
+    },
+    author:{
+        type: String,
+        trim:true
+    },
+    pretime:{
+        type:String,
+        trim:true
     }
+
 });
 module.exports = mongoose.model('Recipe',recipeSchema,'recipe');

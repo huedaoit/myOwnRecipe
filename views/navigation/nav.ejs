@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light naveChangeColor header_background">
     <div class="container-fluid">
-        <img src="public/images/logo.png">
+        <img src="/public/images/logo.png">
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,23 +9,27 @@
                 <div class="collapse navbar-collapse " id="navbarCollapse">
 
                     <ul class="navbar-nav ms-auto">
-                        <li><a href="./" class=" color_change nav-item nav-link active"></a></li>
+                        <li><a href="/" class=" color_change nav-item nav-link active"></a></li>
                         <% if(isAuthenticated) { %>
-                            <li><a href="./index" class=" color_change nav-item nav-link active">Home</a></li>
+                            <li><a href="/index" class=" color_change nav-item nav-link active">Home</a></li>
 
                         <% } else { %>
                         <% } %>
 
                         <% if(isAuthenticated && user.reciperoles=='admin') { %>
-                            <a href="./Recipe" class="nav-item nav-link">Add Recipe</a></li>
+                            <a href="/Recipe" class="nav-item nav-link">Add Recipe</a></li>
                         <% } else { %>
                         <% } %>
 
-                        <li><a href="./aboutme" class="nav-item nav-link">Contact us!</a></li>
+<!--                        <% if(isAuthenticated && user.reciperoles=='admin') { %>-->
+<!--                            <a href="./upload" class="nav-item nav-link">Upload Recipe</a></li>-->
+<!--                        <% } else { %>-->
+<!--                        <% } %>-->
+                        <li><a href="/aboutme" class="nav-item nav-link">Contact us!</a></li>
 
                         <!--                            <a href="./Registration" class="nav-item nav-link signup">Sign Up</a>-->
                         <% if(!isAuthenticated) { %>
-                            <li><a href="./login" class="nav-item nav-link signup">Log In</a></li>
+                            <li><a href="/login" class="nav-item nav-link signup">Log In</a></li>
                         <% } else { %>
                             <li><a href="/logout" class="nav-item nav-link signup">Log Out</a></li>
                         <% } %>

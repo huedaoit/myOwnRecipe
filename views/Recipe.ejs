@@ -25,13 +25,16 @@
 
     <% } else { %>
     <% } %>
-<div class="container">
+<div class="container ">
     <div class="row">
         <div class="col-md-3">
-
+<!--            <form method="post" enctype="multipart/form-data" action="/upload">-->
+<!--                <input type="file" name="file">-->
+<!--                <input type="submit" value="Submit">-->
+<!--            </form>-->
         </div>
-        <div class=" col-md-6 main  ">
-            <form action="/submit-Form" method="post" name="recipe">
+        <div class=" col-md-6 main con_border ">
+            <form action="/submit-Form" enctype="multipart/form-data" method="post" name="recipe">
                 <div class="form-group">
                     <label for="addRecipe"> Recipe Name </label>
                     <input type="text" name="recipe" required class="form-control" value="">
@@ -48,19 +51,33 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="addTime"> Time </label>
-                    <input type="text" name="time"  required class="form-control" value="">
+                    <label for="addAuthor"> Author </label>
+                    <input type="text" name="author"  required class="form-control" value="">
                 </div>
                 <br>
-                <input type="submit" class="btn btn-outline-success"  onclick="createrecipe()" value="Add Recipe">
+                <div class="form-group">
+                    <label for="addPretime">Pre Time </label>
+                    <input type="text" name="pretime"  required class="form-control" value="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="addTime"> Cook Time </label>
+                    <input type="text" name="time"  required class="form-control" value="">
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <label for="addImage"> image </label>
+                    <input type="file" name="uploaded_file"  required class="form-control" value="">
+                </div>
+                <input type="submit" class="btn btn-outline-success btt_margin"  onclick="createrecipe()" value="Add Recipe">
 
             </form>
-
-
         </div>
-        <div class="col-md-3">
-        </div>
-
+<!--        <div class="col-md-3">-->
+<!--            <img src="/public/images/image.jpeg" />-->
+<!--        </div>-->
+    </div>
     </div>
 </div>
 
@@ -74,6 +91,6 @@
     });
 
 </script>
-
+    <%- include('navigation/copyright') %>
 </body>
 </html>

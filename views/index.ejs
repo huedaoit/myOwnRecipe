@@ -17,16 +17,24 @@
 </head>
 <body class="colorChange">
 <%- include('navigation/nav') %>
-<% if(isAuthenticated) { %>
-    <div class="row">
-        <img src="./public/images/banner.jpeg" class="img-fluid">
-        <img src="./public/images/14-benefits-bg.png" class="img-fluid">
+<div class="row_hover row ">
+    <img src="./public/images/banner.jpeg" class="img-fluid" >
+    <img src="./public/images/14-benefits-bg.png" class="img-fluid">
 
-    </div>
-<% } else { %>
-<% } %>
+    <p  class="title"> Create new your recipe?</p>
+    <% if(isAuthenticated) { %>
+        <div class="button  overlay">
+            <a href="./upgrade"> Upgrade now </a></div>
+    <% } else { %>
+        <div class="button  myDIV overlay ">
+            <a  href="./login"> Upgrade </a>
+        </div>
 
-<div class="container ">
+    <% } %>
+
+
+</div>
+<div class="container con_border ">
     <div class="row colorRowChange">
 
         <div class="col-3">
@@ -37,7 +45,7 @@
             <br>
             <p>----------------------------</p>
             <img src="./public/images/1.png" height="200" width="200"/>
-
+<!--            <img src="/public/images/image.jpeg" />-->
         </div>
         <div class="col-md-6 main">
             <br>
@@ -53,6 +61,8 @@
                     </button>
                 <% } else { %>
                 <% } %>
+            </div>
+            </br>
             </div>
         </div>
     </div>
@@ -78,13 +88,21 @@
                     console.log(recipe);
 
                     let item = document.createElement('li');
-                    item.innerHTML = `<b>${recipe.recipe}  </br></b> <br><b>Description:</b> <br>${recipe.description} <br><br><b>Ingredients:</b> <br> ${recipe.ingredient}<br><br><b>  Time to cook:</b> <br>${recipe.time}<br>
+
+                    item.innerHTML = `<b>${recipe.recipe} </br></b> <br><b>Description:</b> <br>${recipe.description} <br><br>
                     <br>
+
                 <% if(isAuthenticated && user.reciperoles == 'admin') { %>
                     <button  type="button" class="btn btn-outline-warning" value="Delete Recipe" onclick="deleteRecipe('${recipe._id}')">Delete Recipe</button>
                    <button  type="button" class="btn btn-outline-warning" value="Edit Recipe" onclick="location.href='/edit/${recipe._id}';" >Edit Recipe</button>
+                   <button  type="button" class="btn btn-outline-warning" value="Read Recipe" onclick="location.href='/main/${recipe._id}';" >Read Recipe</button>
                 <% } %>
-                   <button  type="button" class="btn btn-outline-warning" value="Edit Recipe" onclick="location.href='/order/${recipe._id}';" >Order Recipe</button> </br>`;
+                 <% if(isAuthenticated && user.reciperoles == '') { %>
+                     <div class=" float-end">
+                   <button  type="button" class="btn btn-outline-warning" value="Read Recipe" onclick="location.href='/main/${recipe._id}';" >Read more</button>
+                   </div>
+                <% } %>
+                  </br>`;
 
                     listrecipe.appendChild(item);
                 }
@@ -113,7 +131,7 @@
     }
 
 </script>
-
+<%- include('navigation/copyright') %>
 </body>
 </html>
 
